@@ -1,0 +1,162 @@
+{
+  "Header": {
+    "title": "Introducing Smart Fridge",
+    "paragraph": "Personalized Nutrition at Your Fingertips:Transforming Kitchen Efficiency and Nutrition Management"
+  },
+  "About": {
+    "paragraph": "At PieAi, we're transforming kitchen efficiency and nutrition management. Our Smart Fridge, powered by cutting-edge Computer Vision, automates inventory tracking, reducing food waste with timely expiration alerts. We offer personalized nutrition insights and recipe recommendations, simplifying healthy meal planning. Committed to sustainability and simplicity, PieAi revolutionizes how people interact with their food.",
+    "Why": [
+      "Innovative kitchen solutions",
+      "Personalized nutrition guidance",
+      "Automated waste reduction",
+      "Sleek, space-saving design"
+    ],
+    "Why2": [
+      "Timely expiration alerts",
+      "Expert team dedication",
+      "Intuitive user interface",
+      "Eco-friendly sustainable practices"
+    ]
+  },
+  "Gallery": [
+    {
+      "title": "Fresh Food",
+      "largeImage": "img/portfolio/01-large.jpg",
+      "smallImage": "img/portfolio/01-small.jpg"
+    },
+    {
+      "title": "Smart Fridge",
+      "largeImage": "img/portfolio/02-large.jpg",
+      "smallImage": "img/portfolio/02-small.jpg"
+    },
+    {
+      "title": "Inventory Management",
+      "largeImage": "img/portfolio/03-large.jpg",
+      "smallImage": "img/portfolio/03-small.jpg"
+    },
+    {
+      "title": "Delicious Meals",
+      "largeImage": "img/portfolio/04-large.jpg",
+      "smallImage": "img/portfolio/04-small.jpg"
+    },
+    {
+      "title": "Healthy Family",
+      "largeImage": "img/portfolio/05-large.jpg",
+      "smallImage": "img/portfolio/05-small.jpg"
+    },
+    {
+      "title": "Reduced Food Waste",
+      "largeImage": "img/portfolio/06-large.jpg",
+      "smallImage": "img/portfolio/06-small.jpg"
+    },
+    {
+      "title": "High Nutrition",
+      "largeImage": "img/portfolio/07-large.jpg",
+      "smallImage": "img/portfolio/07-small.jpg"
+    },
+    {
+      "title": "Expiry Alert",
+      "largeImage": "img/portfolio/08-large.jpg",
+      "smallImage": "img/portfolio/08-small.jpg"
+    },
+    {
+      "title": "Tasty Recipes",
+      "largeImage": "img/portfolio/09-large.jpg",
+      "smallImage": "img/portfolio/09-small.jpg"
+    }
+  ],
+  "Services": [
+    {
+      "icon": "fa fa-user",
+      "name": "User-Friendly Interface for Effortless Use",
+      "text": "Stay informed with real-time notifications as your food items near their expiration dates, minimizing waste and maximizing freshness."
+    },
+    {
+      "icon": "fa fa-users",
+      "name": "Expert Team Dedicated to Innovation",
+      "text": "Gain valuable nutritional information for stored items and receive personalized recipe suggestions based on available ingredients, making meal planning healthier and easier."
+    },
+    {
+      "icon": "fa fa-desktop",
+      "name": "Sleek Design Enhancing Your Kitchen Space",
+      "text": "Effortlessly track your food inventory in real-time using our Computer Vision technology, ensuring you always have an accurate view of what's in your fridge."
+    },
+    {
+      "icon": "fa fa-list",
+      "name": "Automated Inventory Management",
+      "text": " Elevate your kitchen aesthetics with our Smart Fridge's modern and space-saving design, seamlessly integrating into your home environment."
+    },
+    {
+      "icon": "fa fa-info",
+      "name": "Nutrition Insights and Recipe Recommendations",
+      "text": "Gain valuable nutritional information for stored items and receive personalized recipe suggestions based on available ingredients, making meal planning healthier and easier."
+    },
+    {
+      "icon": "fa fa-bell-o",
+      "name": "Timely Expiration Alerts",
+      "text": "Stay informed with real-time notifications as your food items near their expiration dates, minimizing waste and maximizing freshness."
+    }
+  ],
+  "Testimonials": [
+    {
+      "img": "img/testimonials/01.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "John Doe"
+    },
+    {
+      "img": "img/testimonials/02.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "Johnathan Doe"
+    },
+    {
+      "img": "img/testimonials/03.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "John Doe"
+    },
+    {
+      "img": "img/testimonials/04.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "Johnathan Doe"
+    },
+    {
+      "img": "img/testimonials/05.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "John Doe"
+    },
+    {
+      "img": "img/testimonials/06.jpg",
+      "text": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at.\"",
+      "name": "Johnathan Doe"
+    }
+  ],
+  "Team": [
+    {
+      "img": "img/team/01.jpg",
+      "name": "Anurag Dey",
+      "job": "Frontend Developer"
+    },
+    {
+      "img": "img/team/02.jpg",
+      "name": "Rounak Saha",
+      "job": "Backend Developer"
+    },
+    {
+      "img": "img/team/03.jpg",
+      "name": "Ankush Agarwala",
+      "job": "Frontend Developer"
+    },
+    {
+      "img": "img/team/04.jpg",
+      "name": "Swapnil Mal",
+      "job": "Backend Developer"
+    }
+  ],
+  "Contact": {
+    "address": "Typ Tollygunge House, kolkata, 700033",
+    "phone": "+91 8910178240",
+    "email": "rounaksaha13@gmail.com",
+    "facebook": "fb.com",
+    "twitter": "twitter.com",
+    "youtube": "youtube.com"
+  }
+}
