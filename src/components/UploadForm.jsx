@@ -2,14 +2,25 @@ import React, { useCallback, useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { useDropzone } from 'react-dropzone';
-import { FaSquare } from 'react-icons/fa';
-import { FaUpload } from 'react-icons/fa';
+import { FaUpload, FaSpinner } from 'react-icons/fa';
+import styled, { keyframes } from 'styled-components';
+
+
+const spin = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
+
+const SpinningFaSpinner = styled(FaSpinner)`
+  animation: ${spin} 2s linear infinite;
+`;
 
 function UploadForm() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [previewUrl, setPreviewUrl] = useState(null);
     const [ingredients, setIngredients] = useState([]);
     const [recipe, setRecipe] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const onDrop = useCallback((acceptedFiles) => {
         setSelectedFile(acceptedFiles[0]);
@@ -19,6 +30,7 @@ function UploadForm() {
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
     const handleUpload = () => {
+        setIsLoading(true);
         if (!selectedFile) {
             console.error('No file selected for upload');
             return;
@@ -74,10 +86,34 @@ function UploadForm() {
                 console.log(result); // Log the entire response object
                 if (result && result[0] && result[0].generated_text) {
                     let recipeText = result[0].generated_text;
-                    recipeText = recipeText.split('title:').join('\n\n**Title:**');
-                    recipeText = recipeText.split('ingredients:').join('\n\n**Ingredients:**');
-                    recipeText = recipeText.split('directions:').join('\n\n**Directions:**');
+                    recipeText = recipeText.replace(/title:/i, '<br />Title:');
+                    recipeText = recipeText.replace(/ingredients:/i, '<br />Ingredients:');
+                    recipeText = recipeText.replace(/directions:/i, '<br />Directions:<br />'); // Start directions on a new line
+                    recipeText = recipeText.replace(/(?<=\D)(?=\b\d+\b)/g, ','); // Add comma before each number except the first one
+                    recipeText = recipeText.replace(/_/g, ' '); // Replace underscore with space
+                    recipeText = recipeText.replace(/(\.\s)([a-z])/g, function(match) {
+                        return match.toUpperCase();
+                    }); // Capitalize first letter after every full stop
+                    recipeText = recipeText.replace(/(directions:<br \/>\s*)([^<]+)/i, function(match, p1, p2) {
+                        return p1 + p2.charAt(0).toUpperCase() + p2.slice(1);
+                    }); // Capitalize first letter of the first line in directions
+                    recipeText = recipeText.replace(/(\d+)\sDegrees\s(f)/gi, '$1 °F'); // Convert "Degrees f" to "°F"
+                    recipeText = recipeText.replace(/(\.\s)/g, '$1<br />'); // Add new line after each full stop
+
+                    // Split the recipe text into sections
+                    let sections = recipeText.split('<br />');
+                    // Find the ingredients section and remove the first comma
+                    for (let i = 0; i < sections.length; i++) {
+                        if (sections[i].startsWith('Ingredients:')) {
+                            sections[i] = sections[i].replace(',', '');
+                            break;
+                        }
+                    }
+                    // Join the sections back together
+                    recipeText = sections.join('<br />');
+
                     setRecipe(recipeText);
+                    setIsLoading(false);
                 } else {
                     console.error('No data in response');
                 }
@@ -85,6 +121,8 @@ function UploadForm() {
             .catch(error => console.error('Error:', error));
         }
     }, [ingredients]);
+    
+    
     
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
@@ -106,22 +144,28 @@ function UploadForm() {
                 </div>
                 <button onClick={handleUpload} style={{ backgroundColor: 'blue', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', cursor: 'pointer', fontSize: '16px', marginTop: '10px' }}>Upload</button>
             </div>
-            <div style={{ marginLeft: '20px', border: '1px solid black', padding: '10px', borderRadius: '5px' }}>
-            <h2>Ingredients</h2>
-            {ingredients.map((ingredient, index) => (
-                <p key={index}>{ingredient}</p>
-            ))}
+            {isLoading ? 
+                <SpinningFaSpinner size={50} /> : (
+                <>
+                    {ingredients.length > 0 && (
+                        <div style={{ marginLeft: '20px', border: '1px solid black', padding: '10px', borderRadius: '5px' }}>
+                            <h2>Ingredients</h2>
+                            {ingredients.map((ingredient, index) => (
+                                <p key={index}>{ingredient}</p>
+                            ))}
+                        </div>
+                    )}
+                    {recipe && (
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <div style={{ marginLeft: '20px', marginTop: '20px', border: '1px solid black', padding: '10px', borderRadius: '5px' }}>
+                                <h2>Recipe</h2>
+                                <div dangerouslySetInnerHTML={{ __html: recipe }} />
+                            </div>
+                        </div>
+                    )}
+                </>
+            )}
         </div>
-
-        {recipe && (
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div style={{ marginLeft: '20px', marginTop: '20px', border: '1px solid black', padding: '10px', borderRadius: '5px' }}>
-                    <h2>Recipe</h2>
-                    {recipe}
-                </div>
-            </div>
-        )}
-    </div>
     );
 }
 
