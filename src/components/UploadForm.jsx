@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import axios from 'axios';
-
+import openai from 'openai';
 import { useDropzone } from 'react-dropzone';
 import { FaUpload, FaSpinner } from 'react-icons/fa';
 import styled, { keyframes } from 'styled-components';
@@ -125,45 +125,49 @@ function UploadForm() {
     
     
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-            <div style={{ paddingTop: '20px' }}>
-                <div {...getRootProps()} style={{ border: '1px dashed gray', padding: '20px', marginBottom: '20px', height: '400px', width: '400px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <input {...getInputProps()} />
-                    {selectedFile ? 
-                        <img src={previewUrl} alt="Uploaded" style={{width: '100%', height: '100%', objectFit: 'cover'}} /> :
-                        isDragActive ? 
-                            <>
-                                <FaUpload size={50} />
-                                <p>Drop the files here ...</p>
-                            </> : 
-                            <>
-                                <FaUpload size={50} />
-                                <p>Drag 'n' drop some files here, or click to select files</p>
-                            </>
-                    }
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '60px', marginBottom: '60px', paddingBottom: '60px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div style={{ paddingTop: '20px' }}>
+                    <h1>Upload the Image of your Fridge</h1> {/* Title */}
+                    <p>We will list out the ingredients, and make a recipe for you too ...</p> {/* Paragraph */}
+                    <div {...getRootProps()} style={{ border: '1px dashed gray', padding: '20px', marginBottom: '20px', height: '400px', width: '400px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <input {...getInputProps()} />
+                        {selectedFile ? 
+                            <img src={previewUrl} alt="Uploaded" style={{width: '100%', height: '100%', objectFit: 'cover'}} /> :
+                            isDragActive ? 
+                                <>
+                                    <FaUpload size={50} />
+                                    <p>Drop the files here ...</p>
+                                </> : 
+                                <>
+                                    <FaUpload size={50} />
+                                    <p>Drag 'n' drop some files here, or click to select files</p>
+                                </>
+                        }
+                    </div>
+                    <button onClick={handleUpload} style={{ backgroundColor: 'blue', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', cursor: 'pointer', fontSize: '16px', marginTop: '10px' }}>Upload</button>
                 </div>
-                <button onClick={handleUpload} style={{ backgroundColor: 'blue', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', cursor: 'pointer', fontSize: '16px', marginTop: '10px' }}>Upload</button>
-            </div>
-            {isLoading ? 
-                <SpinningFaSpinner size={50} /> : (
-                <>
-                    {ingredients.length > 0 && (
-                        <div style={{ marginLeft: '20px', border: '1px solid black', padding: '10px', borderRadius: '5px' }}>
-                            <h2>Ingredients</h2>
-                            {ingredients.map((ingredient, index) => (
-                                <p key={index}>{ingredient}</p>
-                            ))}
-                        </div>
-                    )}
-                    {recipe && (
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <div style={{ marginLeft: '20px', marginTop: '20px', border: '1px solid black', padding: '10px', borderRadius: '5px' }}>
-                                <h2>Recipe</h2>
-                                <div dangerouslySetInnerHTML={{ __html: recipe }} />
+                {isLoading ? 
+                    <SpinningFaSpinner size={50} /> : (
+                    <>
+                        {ingredients.length > 0 && (
+                            <div style={{ marginLeft: '20px', border: '1px solid black', padding: '10px', borderRadius: '5px' }}>
+                                <h2>Ingredients</h2>
+                                {ingredients.map((ingredient, index) => (
+                                    <p key={index}>{ingredient}</p>
+                                ))}
                             </div>
-                        </div>
-                    )}
-                </>
+                        )}
+                    </>
+                )}
+            </div>
+            {recipe && (
+                <div style={{ width: '100%', marginTop: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <div style={{ border: '1px solid black', padding: '10px', borderRadius: '5px' }}>
+                        <h2>Recipe</h2>
+                        <div dangerouslySetInnerHTML={{ __html: recipe }} />
+                    </div>
+                </div>
             )}
         </div>
     );

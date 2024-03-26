@@ -145,6 +145,8 @@ function Nutritional() {
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <div style={{ paddingTop: '20px' }}>
+            <h1>Upload the Image of your Food </h1> {/* Title */}
+                    <p>We will show you the nutritional content for it ...</p> {/* Paragraph */}
                 <div {...getRootProps()} style={{ border: '1px dashed gray', padding: '20px', marginBottom: '20px', height: '400px', width: '400px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                     <input {...getInputProps()} />
                     {selectedFile ? 
