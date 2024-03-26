@@ -1,8 +1,9 @@
-![image](https://github.com/like-rounak/Pie_FridgeModel/assets/78261692/1b768c74-485c-4e9e-87f9-bbfd06249ba0)
 ## Fridge Model Hackathon Project
 
 ## Introduction
-This project was developed during a hackathon with the goal of creating a fridge model application. The initial idea was to allow users to input ingredients they have in their fridges and receive recipes based on those ingredients. Additionally, we aimed to provide nutritional information for Indian food items using image recognition technology.
+This project was developed during a hackathon (HackForge - Organised by JADAVPUR UNIVERSITY SALT LAKE CODE CLUB on SRIJAN'24) with the goal of creating a fridge model application. The initial idea was to allow users to input ingredients they have in their fridges and receive recipes based on those ingredients. Additionally, we aimed to provide nutritional information for Indian food items using image recognition technology.
+
+Btw we came in 3rd Runners Up , and won the Best Begginer Award.
 
 ## Features
 - **Recipe Generation**: Users can input ingredients and receive recipes based on those ingredients.
