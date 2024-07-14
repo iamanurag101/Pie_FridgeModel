@@ -32,8 +32,8 @@ To run the project locally, follow these steps:
 
 
 ## Team Members
-- Rounak Saha (Me)
-- Anurag Dey (https://github.com/iamanurag101)
+- Anurag Dey (Me)
+- Rounak Saha (https://github.com/like-rounak)
 - Swapnil Mal ( )
 - Ankush Agarwala (https://github.com/iamanurag101)
 
